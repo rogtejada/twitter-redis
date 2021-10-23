@@ -1,6 +1,5 @@
-package com.example.twitterredis.repository;
+package com.example.twitterredis.users;
 
-import com.example.twitterredis.model.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, String> {

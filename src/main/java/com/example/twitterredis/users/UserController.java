@@ -1,7 +1,6 @@
-package com.example.twitterredis.controller;
+package com.example.twitterredis.users;
 
-import com.example.twitterredis.model.User;
-import com.example.twitterredis.service.UserService;
+import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +16,11 @@ public class UserController {
 
   public UserController(UserService service) {
     this.service = service;
+  }
+
+  @GetMapping
+  public List<User> getAll() {
+    return service.findAll();
   }
 
   @PostMapping

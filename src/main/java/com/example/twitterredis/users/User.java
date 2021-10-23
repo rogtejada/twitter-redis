@@ -1,4 +1,4 @@
-package com.example.twitterredis.model;
+package com.example.twitterredis.users;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,7 +1,6 @@
-package com.example.twitterredis.service;
+package com.example.twitterredis.users;
 
-import com.example.twitterredis.model.User;
-import com.example.twitterredis.repository.UserRepository;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,4 +20,7 @@ public class UserService {
     return userRepository.findById(id).orElseThrow(() -> new RuntimeException("s"));
   }
 
+  public List<User> findAll() {
+    return (List<User>) userRepository.findAll();
+  }
 }
