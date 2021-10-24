@@ -31,4 +31,8 @@ public class FollowService {
   public Long getFollowingCount(String id) {
     return repository.getFollowingCount(id);
   }
+
+  public void unfollow(String targetUserId, String sourceUserId) {
+    repository.unfollow(targetUserId, sourceUserId);
+  }
 }

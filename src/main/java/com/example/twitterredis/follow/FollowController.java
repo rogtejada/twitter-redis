@@ -1,7 +1,6 @@
 package com.example.twitterredis.follow;
 
-import java.util.Set;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,23 +21,8 @@ public class FollowController {
     service.follow(targetUserId, sourceUserId);
   }
 
-  @GetMapping("/followers/{id}")
-  public Set<String> getFollowers(@PathVariable String id) {
-    return service.getFollowers(id);
-  }
-
-  @GetMapping("/followers/{id}/count")
-  public Long getFollowersCount(@PathVariable String id) {
-    return service.getFollowersCount(id);
-  }
-
-  @GetMapping("/following/{id}")
-  public Set<String> getFollowing(@PathVariable String id) {
-    return service.getFollowing(id);
-  }
-
-  @GetMapping("/following/{id}/count")
-  public Long getFollowingCount(@PathVariable String id) {
-    return service.getFollowingCount(id);
+  @DeleteMapping("/{targetUserId}/user/{sourceUserId}")
+  public void unfollow(@PathVariable String targetUserId,@PathVariable String sourceUserId) {
+    service.unfollow(targetUserId, sourceUserId);
   }
 }

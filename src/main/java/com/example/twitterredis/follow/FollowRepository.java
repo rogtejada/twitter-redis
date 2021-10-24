@@ -1,10 +1,8 @@
 package com.example.twitterredis.follow;
 
-import java.util.List;
 import java.util.Set;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.data.redis.support.collections.DefaultRedisSet;
-import org.springframework.data.redis.support.collections.RedisSet;
 import org.springframework.stereotype.Repository;
 
 @Repository
@@ -22,6 +20,11 @@ public class FollowRepository {
   public void follow(String targetUserId, String sourceUserId) {
     new DefaultRedisSet<String>(String.format(FOLLOWING, sourceUserId), template).add(targetUserId);
     new DefaultRedisSet<String>(String.format(FOLLOWERS, targetUserId), template).add(sourceUserId);
+  }
+
+  public void unfollow(String targetUserId, String sourceUserId) {
+    new DefaultRedisSet<String>(String.format(FOLLOWING, sourceUserId), template).remove(targetUserId);
+    new DefaultRedisSet<String>(String.format(FOLLOWERS, targetUserId), template).remove(sourceUserId);
   }
 
   public Set<String> getFollowers(String userId) {
